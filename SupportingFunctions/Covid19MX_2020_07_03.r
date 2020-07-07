@@ -11,7 +11,7 @@ with(as.list(c(state,parameters)), {
     hospitalization.rate<-min(c(1,hospitalization.rate))
     Infection.Rate<-Contacts.between.Infected.and.Uninfected.People*Infectivity #[people/day]=[people/day]*[1]
     population.infected.with.COVID.that.requires.hospitalization<-population.infected.with.COVID*hospitalization.rate #[people]=[people]*[1]
-    health.system.load<-population.infected.with.COVID.that.requires.hospitalization/Health.system.carrying.capacity #[1]=[people]/[people]
+    health.system.load<-(population.infected.with.COVID.that.requires.hospitalization+isolations.that.require.hospitalization)/Health.system.carrying.capacity #[1]=[people]/[people]
     effect.of.overburden.on.mortality.rate<-1.0+atan((1/overburden.impact)*health.system.load) #[1]
     mortality.rate<-mortality.rate.base*effect.of.overburden.on.mortality.rate #[1]=[1]*[1]
     mortality.rate<-min(c(1,mortality.rate)) #[1]
